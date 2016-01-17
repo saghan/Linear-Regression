@@ -1,9 +1,12 @@
 package ml;
 import java.io.*;
-
-import file_resource.*;
-
 import java.util.*;
+/*
+		 * The relation between domain (x) and range (y) is assumed to be of form:
+		 * y=theta0 + theta1 * x;
+		 * alpha is the learning rate
+		 * Gradient descent is used to find optimal theta0 and theta1
+		 */
 public class LinearRegression {
 	static Double sum1(Double theta0, Double theta1, ArrayList<Integer> x,ArrayList<Integer> y){
 		Double sum=0.0;
@@ -22,12 +25,7 @@ public class LinearRegression {
 	
 	
 	public static void main(String[] args) throws IOException {
-		/*
-		 * The relation between domain (x) and range (y) is assumed to be of form:
-		 * y=theta0 + theta1 * x;
-		 * alpha is the learning rate
-		 * Gradient descent is used to find optimal theta0 and theta1
-		 */
+		
 		InputStream ipstr=LinearRegression.class.getResourceAsStream("input.txt");
 		if(ipstr==null)
 			System.out.println("cant read resoursce");
@@ -62,7 +60,7 @@ public class LinearRegression {
 		System.out.println("cost ="+cost);
 		if (cost>cost_old)
 		{
-			System.out.println("Cost is not converging");
+			System.out.println("Cost is not converging. Decrease learning rate.");
 			break;
 		}
 		for(int j=0;j<x.size();j++)
